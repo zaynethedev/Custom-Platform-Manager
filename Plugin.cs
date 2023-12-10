@@ -47,7 +47,7 @@ namespace CubeSummoner
 			{
 				Debug.Log("The MyCubeL is real!");
 			}
-			else if (MyCubeL = null)
+			if (MyCubeL = null)
 			{
 				Instantiate(MyCubeL);
 			}
@@ -56,7 +56,7 @@ namespace CubeSummoner
 			{
 				Debug.Log("The MyCubeR is real!");
 			}
-			else if (MyCubeR = null)
+			if (MyCubeR = null)
 			{
 				Instantiate(MyCubeR);
 			}
