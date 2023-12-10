@@ -48,6 +48,8 @@ namespace CubeSummoner
 			/* Code here runs every frame when the mod is enabled */
 			if (inRoom)
 			{
+   				if (ControllerInputPoller.instance != null)
+				{
 				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
 					if (posSetR == false)
@@ -73,12 +75,16 @@ namespace CubeSummoner
 				}
 				else
 				{
-					posSetL = false;
-					MyCubeL.transform.position = new Vector3(0, 0, 0);
+                                      posSetL = false;
+				      MyCubeL.transform.position = new Vector3(0, 0, 0);
+				    }
+				}
+				else
+				{
+					Debug.LogError("Error: inRoom is false or GorillaTagger or ControllerInputPoller is null");
 				}
 			}
 		}
-
 		/* This attribute tells Utilla to call this method when a modded room is joined */
 		[ModdedGamemodeJoin]
 		public void OnJoin(string gamemode)
