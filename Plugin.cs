@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BepInEx;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
@@ -25,11 +25,14 @@ namespace CubeSummoner
 		{
 			/* A lot of Gorilla Tag systems will not be set up when start is called /*
 			/* Put code in OnGameInitialized to avoid null references */
+			Utilla.Events.GameInitialized += OnGameInitialized;
 			MyCubeL = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			MyCubeL.transform.position = new Vector3(0, 0, 0);
 			MyCubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			MyCubeR.transform.position = new Vector3(0, 0, 0);
-			Utilla.Events.GameInitialized += OnGameInitialized;
+			MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
+			CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
+			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
 		}
 
 		void OnEnable()
@@ -57,21 +60,31 @@ namespace CubeSummoner
 			{
 				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
-					if (MyCubeR != null) return; // so you dont spam duplictates
-					MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
-					CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
-					MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
-
 					while (posSetR == false)
 					{
 						GorillaTagger.Instance.rightHandTransform.position = MyCubeR.transform.position;
+						posSetR = true;
 					}
 					MyCubeR.transform.position = GorillaTagger.Instance.rightHandTransform.position;
 				}
-				else if (ControllerInputPoller.instance.rightControllerGripFloat <= 0.6f)
+				else
 				{
 					posSetR = false;
                     MyCubeR.transform.position = new Vector3(0, 0, 0);
+				},
+				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
+				{
+					while (posSetL == false)
+					{
+						GorillaTagger.Instance.leftHandTransform.position = MyCubeL.transform.position;
+						posSetL = true;
+					}
+					MyCubeL.transform.position = GorillaTagger.Instance.leftHandTransform.position;
+				}
+				else
+				{
+					posSetL = false;
+                    MyCubeL.transform.position = new Vector3(0, 0, 0);
 				}
 			}
 		}
