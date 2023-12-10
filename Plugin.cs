@@ -70,7 +70,7 @@ namespace CubeSummoner
 				else
 				{
 					posSetR = false;
-                    MyCubeR.transform.position = new Vector3(0, 0, 0);
+                    			MyCubeR.transform.position = new Vector3(0, 0, 0);
 				},
 				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
 				{
@@ -84,7 +84,7 @@ namespace CubeSummoner
 				else
 				{
 					posSetL = false;
-                    MyCubeL.transform.position = new Vector3(0, 0, 0);
+                    			MyCubeL.transform.position = new Vector3(0, 0, 0);
 				}
 			}
 		}
