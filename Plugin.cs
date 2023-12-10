@@ -43,6 +43,8 @@ namespace CubeSummoner
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
+   			Instantiate(MyCubeL);
+      			Instantiate(MyCubeR);
 		}
 
 		void Update()
