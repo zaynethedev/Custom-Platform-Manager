@@ -31,6 +31,7 @@ namespace CubeSummoner
 			MyCubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			MyCubeR.transform.position = new Vector3(0, 0, 0);
 			MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
+                        MyCubeL.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
 			CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
@@ -54,7 +55,9 @@ namespace CubeSummoner
 						MyCubeR.transform.position = new Vector3(GorillaTagger.Instance.rightHandTransform.position.x, GorillaTagger.Instance.rightHandTransform.position.y, GorillaTagger.Instance.rightHandTransform.position.z);
 						posSetR = true;
 					}
-					GorillaTagger.Instance.rightHandTransform.position = new Vector3(MyCubeR.transform.position.x, MyCubeR.transform.position.y, MyCubeR.transform.position.z);
+					GorillaTagger.Instance.rightHandTransform.position.x = MyCubeR.transform.position.x;
+                                        GorillaTagger.Instance.rightHandTransform.position.y = MyCubeR.transform.position.y;
+				        GorillaTagger.Instance.rightHandTransform.position.z= MyCubeR.transform.position.z;
 				}
 
 				else
