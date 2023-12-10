@@ -32,7 +32,9 @@ namespace CubeSummoner
 			MyCubeR.transform.position = new Vector3(0, 0, 0);
 			MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
 			CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
+			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
+			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
 		}
 
 		void OnEnable()
