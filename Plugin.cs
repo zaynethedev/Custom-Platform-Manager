@@ -71,7 +71,7 @@ namespace CubeSummoner
 				{
 					posSetR = false;
                     			MyCubeR.transform.position = new Vector3(0, 0, 0);
-				},
+				}
 				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
 				{
 					while (posSetL == false)
