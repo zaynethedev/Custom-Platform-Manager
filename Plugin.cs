@@ -43,25 +43,9 @@ namespace CubeSummoner
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
-			if (MyCubeL != null)
-			{
-				Debug.Log("The MyCubeL is real!");
-			}
-			if (MyCubeL = null)
-			{
-				Instantiate(MyCubeL);
-			}
-
-			if (MyCubeR != null)
-			{
-				Debug.Log("The MyCubeR is real!");
-			}
-			if (MyCubeR = null)
-			{
-				Instantiate(MyCubeR);
-			}
-		}
-
+			Instantiate(MyCubeL);
+   			Instantiate(MyCubeR);
+      
 		void Update()
 		{
 			/* Code here runs every frame when the mod is enabled */
