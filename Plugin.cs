@@ -49,7 +49,7 @@ namespace CubeSummoner
 			{
 				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
-					while (posSetR == false)
+					if (posSetR == false)
 					{
 						GorillaTagger.Instance.rightHandTransform.position = MyCubeR.transform.position;
 						posSetR = true;
@@ -63,7 +63,7 @@ namespace CubeSummoner
 				}
 				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
 				{
-					while (posSetL == false)
+					if (posSetL == false)
 					{
 						GorillaTagger.Instance.leftHandTransform.position = MyCubeL.transform.position;
 						posSetL = true;
