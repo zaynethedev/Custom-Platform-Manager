@@ -37,6 +37,8 @@ namespace CubeSummoner
 			MyCubeL.transform.position = new Vector3(0, 0, 0);
 			MyCubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			MyCubeR.transform.position = new Vector3(0, 0, 0);
+   			MyCubeL.name = "MyCubeL";
+      			MyCubeR.name = "MyCubeR";
 			MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
 			MyCubeL.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
 			CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
