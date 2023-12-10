@@ -45,6 +45,9 @@ namespace CubeSummoner
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
    			Instantiate(MyCubeL);
       			Instantiate(MyCubeR);
+			if (MyCubeL) {
+				debug.log("The MyCubeL is real!");
+			}
 		}
 
 		void Update()
