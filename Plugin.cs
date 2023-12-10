@@ -51,29 +51,30 @@ namespace CubeSummoner
 				{
 					if (posSetR == false)
 					{
-						GorillaTagger.Instance.rightHandTransform.position = MyCubeR.transform.position;
+						MyCubeR.transform.position = new Vector3(GorillaTagger.Instance.rightHandTransform.position.x, GorillaTagger.Instance.rightHandTransform.position.y, GorillaTagger.Instance.rightHandTransform.position.z);
 						posSetR = true;
 					}
-					MyCubeR.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+					GorillaTagger.Instance.rightHandTransform.position = new Vector3(MyCubeR.transform.position.x, MyCubeR.transform.position.y, MyCubeR.transform.position.z);
 				}
+
 				else
 				{
 					posSetR = false;
-                    			MyCubeR.transform.position = new Vector3(0, 0, 0);
+					MyCubeR.transform.position = new Vector3(0, 0, 0);
 				}
 				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
 				{
 					if (posSetL == false)
 					{
-						GorillaTagger.Instance.leftHandTransform.position = MyCubeL.transform.position;
+						MyCubeL.transform.position = GorillaTagger.Instance.leftHandTransform.position;
 						posSetL = true;
 					}
-					MyCubeL.transform.position = GorillaTagger.Instance.leftHandTransform.position;
+					GorillaTagger.Instance.leftHandTransform.position = MyCubeL.transform.position;
 				}
 				else
 				{
 					posSetL = false;
-                    			MyCubeL.transform.position = new Vector3(0, 0, 0);
+					MyCubeL.transform.position = new Vector3(0, 0, 0);
 				}
 			}
 		}
