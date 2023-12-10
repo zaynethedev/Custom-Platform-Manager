@@ -14,11 +14,11 @@ namespace CubeSummoner
 	public class Plugin : BaseUnityPlugin
 	{
 		bool inRoom;
-		bool posSetR;
-		bool posSetL;
-		internal GameObject MyCubeR;
+		bool platSetR;
+		bool platSetL;
+		internal GameObject CustomPlatR;
 		internal Material CubeMaterialR;
-		internal GameObject MyCubeL;
+		internal GameObject CustomPlatL;
 		internal Material CubeMaterialL;
 
 		void Start()
@@ -31,56 +31,62 @@ namespace CubeSummoner
 		void OnGameInitialized(object sender, EventArgs e)
 		{
 			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
-			Debug.Log(GorillaLocomotion.Player.Instance.rightControllerTransform.position);
-			Debug.Log(GorillaLocomotion.Player.Instance.leftControllerTransform.position);
-			MyCubeL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			MyCubeL.transform.position = new Vector3(0, 0, 0);
-			MyCubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			MyCubeR.transform.position = new Vector3(0, 0, 0);
-			MyCubeL.name = "MyCubeL";
-			MyCubeR.name = "MyCubeR";
-			MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
-			MyCubeL.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
+			//create cubes
+			CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CustomPlatL.transform.position = new Vector3(0, 0, 0);
+			CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CustomPlatR.transform.position = new Vector3(0, 0, 0);
+			//set cube name
+			CustomPlatL.name = "CustomPlatL";
+			CustomPlatR.name = "CustomPlatR";
+			//set cube size
+			CustomPlatR.transform.localScale = new Vector3(0.25f, 0.04f, 0.25f);
+			CustomPlatL.transform.localScale = new Vector3(0.25f, 0.04f, 0.25f);
+			//make cube visible
 			CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
-			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
-			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
-			Instantiate(MyCubeL);
-			Instantiate(MyCubeR);
+			CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
+			CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
+			//make cube real
+			Instantiate(CustomPlatL);
+			Instantiate(CustomPlatR);
 		}
 		void Update()
-		{
+		{Player
 			/* Code here runs every frame when the mod is enabled */
 			if (inRoom)
 			{
-
+				//right controller
 				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
-					if (posSetR == false)
+					if (platSetR == false)
 					{
-						MyCubeR.transform.position = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.position.x, GorillaLocomotion.Player.Instance.rightControllerTransform.position.y, GorillaLocomotion.Player.Instance.rightControllerTransform.position.z);
-						posSetR = true;
+						CustomPlatR.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
+						platSetR = true;
 					}
-					GorillaLocomotion.Player.Instance.rightControllerTransform.position = new Vector3(MyCubeR.transform.position.x, MyCubeR.transform.position.y, MyCubeR.transform.position.z);
+					CustomPlatR.transform.position = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.position.x, GorillaLocomotion.Player.Instance.rightControllerTransform.position.y, GorillaLocomotion.Player.Instance.rightControllerTransform.position.z);
 				}
 				else
 				{
-					posSetR = false;
-					MyCubeR.transform.position = new Vector3(0, 0, 0);
+					platSetR = false;
+					CustomPlatR.transform.position = new Vector3(0, 0, 0);
+					CustomPlatR.transform.eulerAngles = new Vector3(0, 0, 0);
 				}
+				//left controller
 				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
 				{
-					if (posSetL == false)
+					if (platSetL == false)
 					{
-						MyCubeL.transform.position = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.position.x, GorillaLocomotion.Player.Instance.leftControllerTransform.position.y, GorillaLocomotion.Player.Instance.leftControllerTransform.position.z);
-						posSetL = true;
+						CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
+						CustomPlatL.transform.position = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.position.x, GorillaLocomotion.Player.Instance.leftControllerTransform.position.y, GorillaLocomotion.Player.Instance.leftControllerTransform.position.z);
+						platSetL = true;
 					}
-					GorillaLocomotion.Player.Instance.leftControllerTransform.position = new Vector3(MyCubeL.transform.position.x, MyCubeL.transform.position.y, MyCubeL.transform.position.z);
 				}
 				else
 				{
-					posSetL = false;
-					MyCubeL.transform.position = new Vector3(0, 0, 0);
+					platSetL = false;
+					CustomPlatL.transform.position = new Vector3(0, 0, 0);
+					CustomPlatL.transform.eulerAngles = new Vector3(0, 0, 0);
 				}
 
 			}
