@@ -37,15 +37,17 @@ namespace CubeSummoner
 			MyCubeL.transform.position = new Vector3(0, 0, 0);
 			MyCubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			MyCubeR.transform.position = new Vector3(0, 0, 0);
+			MyCubeL.name = "MyCubeL";
+			MyCubeR.name = "MyCubeR";
 			MyCubeR.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
 			MyCubeL.transform.localScale = new Vector3(0.5f, 0.175f, 0.5f);
 			CubeMaterialR = new Material(Shader.Find("GorillaTag/UberShader"));
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
-   			Instantiate(MyCubeL);
-      			Instantiate(MyCubeR);
-
+			Instantiate(MyCubeL);
+			Instantiate(MyCubeR);
+		}
 		void Update()
 		{
 			/* Code here runs every frame when the mod is enabled */
