@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BepInEx;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
@@ -41,6 +41,8 @@ namespace CubeSummoner
 		void OnGameInitialized(object sender, EventArgs e)
 		{
 			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
+			Debug.Log(GorillaLocomotion.Player.Instance.rightControllerTransform.position);
+			Debug.Log(GorillaLocomotion.Player.Instance.leftControllerTransform.position);
 		}
 
 		void Update()
@@ -48,14 +50,15 @@ namespace CubeSummoner
 			/* Code here runs every frame when the mod is enabled */
 			if (inRoom)
 			{
+
 				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
 					if (posSetR == false)
 					{
-						MyCubeR.transform.position = new Vector3(GorillaTagger.Instance.rightHandTransform.position.x, GorillaTagger.Instance.rightHandTransform.position.y, GorillaTagger.Instance.rightHandTransform.position.z);
+						MyCubeR.transform.position = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.position.x, GorillaLocomotion.Player.Instance.rightControllerTransform.position.y, GorillaLocomotion.Player.Instance.rightControllerTransform.position.z);
 						posSetR = true;
 					}
-					GorillaTagger.Instance.rightHandTransform.position = new Vector3(MyCubeR.transform.position.x, MyCubeR.transform.position.y, MyCubeR.transform.position.z);
+					GorillaLocomotion.Player.Instance.rightControllerTransform.position = new Vector3(MyCubeR.transform.position.x, MyCubeR.transform.position.y, MyCubeR.transform.position.z);
 				}
 				else
 				{
@@ -66,19 +69,19 @@ namespace CubeSummoner
 				{
 					if (posSetL == false)
 					{
-						MyCubeL.transform.position = new Vector3(GorillaTagger.Instance.leftHandTransform.position.x, GorillaTagger.Instance.leftHandTransform.position.y, GorillaTagger.Instance.leftHandTransform.position.z);
+						MyCubeL.transform.position = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.position.x, GorillaLocomotion.Player.Instance.leftControllerTransform.position.y, GorillaLocomotion.Player.Instance.leftControllerTransform.position.z);
 						posSetL = true;
 					}
-					GorillaTagger.Instance.leftHandTransform.position = new Vector3(MyCubeL.transform.position.x, MyCubeL.transform.position.y, MyCubeL.transform.position.z);
+					GorillaLocomotion.Player.Instance.leftControllerTransform.position = new Vector3(MyCubeL.transform.position.x, MyCubeL.transform.position.y, MyCubeL.transform.position.z);
 				}
 				else
 				{
 					posSetL = false;
 					MyCubeL.transform.position = new Vector3(0, 0, 0);
 				}
+
 			}
 		}
-
 		/* This attribute tells Utilla to call this method when a modded room is joined */
 		[ModdedGamemodeJoin]
 		public void OnJoin(string gamemode)
