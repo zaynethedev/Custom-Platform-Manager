@@ -43,15 +43,24 @@ namespace CubeSummoner
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
-   			Instantiate(MyCubeL);
-      			Instantiate(MyCubeR);
-			if (MyCubeL) {
-				Debug.log("The MyCubeL is real!");
+			if (MyCubeL != null)
+			{
+				Debug.Log("The MyCubeL is real!");
 			}
-   			else
-      			{
-	 			Debug.log("the cube is a lie");
+			else if (MyCubeL = null)
+			{
+				Instantiate(MyCubeL);
 			}
+
+			if (MyCubeR != null)
+			{
+				Debug.Log("The MyCubeR is real!");
+			}
+			else if (MyCubeR = null)
+			{
+				Instantiate(MyCubeR);
+			}
+		}
 
 		void Update()
 		{
