@@ -46,9 +46,12 @@ namespace CubeSummoner
    			Instantiate(MyCubeL);
       			Instantiate(MyCubeR);
 			if (MyCubeL) {
-				debug.log("The MyCubeL is real!");
+				Debug.log("The MyCubeL is real!");
 			}
-		}
+   			else
+      			{
+	 			Debug.log("the cube is a lie");
+			}
 
 		void Update()
 		{
