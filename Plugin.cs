@@ -26,6 +26,13 @@ namespace CubeSummoner
 			/* A lot of Gorilla Tag systems will not be set up when start is called /*
 			/* Put code in OnGameInitialized to avoid null references */
 			Utilla.Events.GameInitialized += OnGameInitialized;
+		}
+
+		void OnGameInitialized(object sender, EventArgs e)
+		{
+			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
+			Debug.Log(GorillaLocomotion.Player.Instance.rightControllerTransform.position);
+			Debug.Log(GorillaLocomotion.Player.Instance.leftControllerTransform.position);
 			MyCubeL = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			MyCubeL.transform.position = new Vector3(0, 0, 0);
 			MyCubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -36,13 +43,6 @@ namespace CubeSummoner
 			CubeMaterialL = new Material(Shader.Find("GorillaTag/UberShader"));
 			MyCubeR.GetComponent<Renderer>().material = CubeMaterialR;
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
-		}
-
-		void OnGameInitialized(object sender, EventArgs e)
-		{
-			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
-			Debug.Log(GorillaLocomotion.Player.Instance.rightControllerTransform.position);
-			Debug.Log(GorillaLocomotion.Player.Instance.leftControllerTransform.position);
 		}
 
 		void Update()
