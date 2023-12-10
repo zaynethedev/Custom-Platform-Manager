@@ -37,19 +37,6 @@ namespace CubeSummoner
 			MyCubeL.GetComponent<Renderer>().material = CubeMaterialL;
 		}
 
-		void OnEnable()
-		{
-			/* Set up your mod here */
-			/* Code here runs at the start and whenever your mod is enabled*/
-		}
-
-		void OnDisable()
-		{
-			/* Undo mod setup here */
-			/* This provides support for toggling mods with ComputerInterface, please implement it :) */
-			/* Code here runs whenever your mod is disabled (including if it disabled on startup)*/
-		}
-
 		void OnGameInitialized(object sender, EventArgs e)
 		{
 			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
@@ -95,9 +82,6 @@ namespace CubeSummoner
 		[ModdedGamemodeJoin]
 		public void OnJoin(string gamemode)
 		{
-			/* Activate your mod here */
-			/* This code will run regardless of if the mod is enabled*/
-			/* Make sure all code is going to be here or else your mod will be considered a cheat.*/
 			inRoom = true;
 		}
 
@@ -105,9 +89,6 @@ namespace CubeSummoner
 		[ModdedGamemodeLeave]
 		public void OnLeave(string gamemode)
 		{
-			/* Deactivate your mod here */
-			/* This code will run regardless of if the mod is enabled*/
-
 			inRoom = false;
 		}
 	}
