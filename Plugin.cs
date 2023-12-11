@@ -52,7 +52,7 @@ namespace CubeSummoner
 			Instantiate(CustomPlatR);
 		}
 		void Update()
-		{Player
+		{
 			/* Code here runs every frame when the mod is enabled */
 			if (inRoom)
 			{
