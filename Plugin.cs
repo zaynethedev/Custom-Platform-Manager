@@ -92,7 +92,7 @@ namespace CubeSummoner
 			Instantiate(CustomPlatR);
 			CustomPlatL.AddComponent<GorillaSurfaceOverride>();
 			CustomPlatR.AddComponent<GorillaSurfaceOverride>();
-			Instantiate(CustomPlatformManager);
+			CustomPlatformManager = Instantiate(CustomPlatformManager);
 			Debug.Log("Platform Manager was instantiated");
 		}
 
