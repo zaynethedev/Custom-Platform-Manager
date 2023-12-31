@@ -5,8 +5,8 @@
 	/// </summary>
 	class PluginInfo
 	{
-		public const string GUID = "com.zaynevr.gorillatag.cubesummoner";
+		public const string GUID = "com.zaynevr.gorillatag.CubeSummoner";
 		public const string Name = "CubeSummoner";
-		public const string Version = "0.0.1";
+		public const string Version = "1.3.6";
 	}
 }
