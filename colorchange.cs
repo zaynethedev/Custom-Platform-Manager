@@ -27,154 +27,28 @@ namespace CubeSummoner.buttons
             onPressButton.AddListener(new UnityEngine.Events.UnityAction(ButtonActivation));
         }
 
-        public override void ButtonActivation()
-        {
-            isOn = !isOn;
-            string gameObjectName = gameObject.name;
-            //red
-            switch(gameObjectName)
-            {
-                case "R0":
-                    var RValue0 = Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue0");
-                    var RValue1 = Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue1");
-                    Debug.Log($"RValue0 is null: {RValue0 is null}");
-                    Debug.Log($"RValue1 is null: {RValue1 is null}");
-                    rValue = 0f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CustomPlatformManagerVersionText.text = "e";
-                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue0").gameObject.SetActive(false);
-                    Debug.Log("e");				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue1").gameObject.SetActive(true);
-                    Debug.Log("e2");	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue2").gameObject.SetActive(false);
-                    Debug.Log("e3");	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue3").gameObject.SetActive(false);	
-                    Debug.Log("e4");
-                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue4").gameObject.SetActive(false);
-                    Debug.Log("e5");
-                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue5").gameObject.SetActive(false);
-                    Debug.Log("e6");	
-                    break;
-                case "R1":
-                    rValue = 51f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(false);				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(true);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(false);	
-	 			    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(false);				
-                    break;
-                case "R2":
-                    rValue = 102f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(false);				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(true);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(false);	
-	 			    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(false);				
-                    break;
-                case "R3":
-                    rValue = 153f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(false);				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(true);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(false);	
-	 			    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(false);				
-                    break;
-                case "R4":
-                    rValue = 204f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(false);				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(true);	
-	 			    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(false);				
-                    break;
-                case "R5":
-                    rValue = 255f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(false);				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(false);	
-	 			    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(true);				
-                    break;
-                // green
-                case "G0":
-                    gValue = 0f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "G1":
-                    gValue = 51f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "G2":
-                    gValue = 102f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "G3":
-                    gValue = 153f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "G4":
-                    gValue = 204f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "G5":
-                    gValue = 255f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                // blue
-                case "B0":
-                    bValue = 0f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "B1":
-                    bValue = 51f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "B2":
-                    bValue = 102f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "B3":
-                    bValue = 153f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "B4":
-                    bValue = 204f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-                case "B5":
-                    bValue = 255f;
-                    Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
-                    Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-                    break;
-            }
-        }
+public override void ButtonActivation()
+{
+    isOn = !isOn;
+    string gameObjectName = gameObject.name;
+    string name = gameObjectName[0] + "Value" + gameObjectName[1];
+    var parent = Plugin.Instance.CustomPlatformManager.transform.Find($"Computer/Color/{gameObjectName[0]}Values");
+    foreach (Transform child in parent)
+    {
+        bool shouldBeActive = child.name == name;
+        child.gameObject.SetActive(shouldBeActive);
+    }
+    switch (name[0])
+    {
+        case 'R':
+            rValue = int.Parse(gameObjectName[1].ToString()) * 255 / 4f;
+            break;
+        case 'G':
+            gValue = int.Parse(gameObjectName[1].ToString()) * 255 / 4f;
+            break;
+        case 'B':
+            bValue = int.Parse(gameObjectName[1].ToString()) * 255 / 4f;
+            break;
     }
 
 }
