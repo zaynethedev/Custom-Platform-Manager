@@ -7,6 +7,6 @@
 	{
 		public const string GUID = "com.zaynevr.gorillatag.CubeSummoner";
 		public const string Name = "CubeSummoner";
-		public const string Version = "1.3.6";
+		public const string Version = "1.3.7";
 	}
 }

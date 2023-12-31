@@ -93,32 +93,27 @@ namespace CubeSummoner
 			CustomPlatL.AddComponent<GorillaSurfaceOverride>();
 			CustomPlatR.AddComponent<GorillaSurfaceOverride>();
 			Instantiate(CustomPlatformManager);
+			Debug.Log("Platform Manager was instantiated");
 		}
 
 		void Prepare()
 		{
-			    Debug.Log("Prepare() method called");
-				//red
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(true);				
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(false);	
-	 			CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(false);				
-		        //blue
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("BValues")?.gameObject.transform.Find("BValue0")?.gameObject.SetActive(true);				
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("BValues")?.gameObject.transform.Find("BValue1")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("BValues")?.gameObject.transform.Find("BValue2")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("BValues")?.gameObject.transform.Find("BValue3")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("BValues")?.gameObject.transform.Find("BValue4")?.gameObject.SetActive(false);	
-	 			CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("BValues")?.gameObject.transform.Find("BValue5")?.gameObject.SetActive(false);				
-				//green
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("GValues")?.gameObject.transform.Find("GValue0")?.gameObject.SetActive(true);				
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("GValues")?.gameObject.transform.Find("GValue1")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("GValues")?.gameObject.transform.Find("GValue2")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("GValues")?.gameObject.transform.Find("GValue3")?.gameObject.SetActive(false);	
-				CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("GValues")?.gameObject.transform.Find("GValue4")?.gameObject.SetActive(false);	
-	 			CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("GValues")?.gameObject.transform.Find("GValue5")?.gameObject.SetActive(false);	
+			Debug.Log("Prepare() method called");
+			// Get a reference to the Color transform ONCE
+			var colorTransform = CustomPlatformManager.transform.Find("Computer/Color");
+			// Loop through all children of the Color transform
+			foreach (Transform child in colorTransform.gameObject.GetComponentsInChildren<Transform>())
+			{
+				Debug.Log($"childname: {child.name}");
+				if (child.parent.name.EndsWith("Values"))
+				{
+					// Only run this code if the parent of the current child is "RValues", "GValues" or "BValues"
+					// If the child name ends with 0, it should be active, otherwise, inactive
+					bool shouldBeActive = child.name.EndsWith("0");
+					// set the child's active state to the bool we just calculated
+					child.gameObject.SetActive(shouldBeActive);
+				}
+			}
 		}
 
 		public AssetBundle LoadAssetBundle(string path)

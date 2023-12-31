@@ -35,15 +35,26 @@ namespace CubeSummoner.buttons
             switch(gameObjectName)
             {
                 case "R0":
+                    var RValue0 = Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue0");
+                    var RValue1 = Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue1");
+                    Debug.Log($"RValue0 is null: {RValue0 is null}");
+                    Debug.Log($"RValue1 is null: {RValue1 is null}");
                     rValue = 0f;
                     Plugin.Instance.CubeMaterialL.color = new Color(rValue, gValue, bValue) / 255;
                     Plugin.Instance.CubeMaterialR.color = new Color(rValue, gValue, bValue) / 255;
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue0")?.gameObject.SetActive(true);				
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue1")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue2")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue3")?.gameObject.SetActive(false);	
-				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue4")?.gameObject.SetActive(false);	
-	 			    Plugin.Instance.CustomPlatformManager.transform.Find("Computer")?.gameObject.transform.Find("Color")?.gameObject.transform.Find("RValues")?.gameObject.transform.Find("RValue5")?.gameObject.SetActive(false);				
+                    Plugin.Instance.CustomPlatformManagerVersionText.text = "e";
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue0").gameObject.SetActive(false);
+                    Debug.Log("e");				
+				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue1").gameObject.SetActive(true);
+                    Debug.Log("e2");	
+				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue2").gameObject.SetActive(false);
+                    Debug.Log("e3");	
+				    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue3").gameObject.SetActive(false);	
+                    Debug.Log("e4");
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue4").gameObject.SetActive(false);
+                    Debug.Log("e5");
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color/RValues/RValue5").gameObject.SetActive(false);
+                    Debug.Log("e6");	
                     break;
                 case "R1":
                     rValue = 51f;
