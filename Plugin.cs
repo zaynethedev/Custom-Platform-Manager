@@ -4,12 +4,13 @@ using System.Reflection;
 using BepInEx;
 using UnityEngine;
 using Utilla;
-using CubeSummoner.buttons;
+using CustomPlatformManager.buttons;
 using System.ComponentModel;
 using TMPro;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 
-namespace CubeSummoner
+namespace CustomPlatformManager
 {
 	/// <summary
 	/* This attribute tells Utilla to look for [ModdedGameJoin] and [ModdedGameLeave] */
@@ -33,11 +34,13 @@ namespace CubeSummoner
 		public GameObject CustomPlatformManagerRedTextObject;
 		public GameObject CustomPlatformManagerBlueTextObject;
 		public GameObject CustomPlatformManagerGreenTextObject;
+		public Vector3 MenuPos = new Vector3(-65.2155f, 11.9882f, -80.9355f);
+		public Vector3 MenuRot = new Vector3(0f, 300f, 0f);
 		public static Plugin Instance;
 
 		void Start()
 		{
-			var bundle = LoadAssetBundle("CubeSummoner.model");
+			var bundle = LoadAssetBundle("CustomPlatformManager.model");
 			CustomPlatformManager = bundle.LoadAsset<GameObject>("CustomPlatformManagerMenu");
 			var CustomPlatform = bundle.LoadAsset<GameObject>("CustomPlatformManagerMenu");
 			CustomPlatformManagerRButtons = CustomPlatformManager.transform.Find("ColorButtons")?.gameObject.transform.Find("Red")?.gameObject;
@@ -59,7 +62,8 @@ namespace CubeSummoner
 			CustomPlatL.transform.position = new Vector3(0, 0, 0);
 			CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			CustomPlatR.transform.position = new Vector3(0, 0, 0);
-			CustomPlatformManager.transform.position = new Vector3(-65.76f, 12.19f, -81.49f);
+			CustomPlatformManager.transform.position = MenuPos;
+			CustomPlatformManager.transform.rotation = Quaternion.Euler(MenuRot);
 			CustomPlatformManager.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 			CustomPlatL.name = "CustomPlatL";
 			CustomPlatR.name = "CustomPlatR";
