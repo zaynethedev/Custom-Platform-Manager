@@ -5,4 +5,4 @@
 
 *thanks to Lofiat and The REAL KyleTheScientist*
 
-[![Watch the trailer](https://img.youtube.com/vi/T-lyGcfqRgPvk/maxresdefault.jpg)](https://youtu.be/lyGcfqRgPvk)
+[![Watch the trailer](https://img.youtube.com/vi/lyGcfqRgPvk/maxresdefault.jpg)](https://youtu.be/lyGcfqRgPvk)
