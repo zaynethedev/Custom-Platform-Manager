@@ -26,6 +26,8 @@ namespace CustomPlatformManager
 		internal Material CubeMaterialR;
 		internal GameObject CustomPlatL;
 		internal Material CubeMaterialL;
+                internal GameObject CubeL;
+                internal GameObject CubeR;
 		internal GameObject CustomPlatformManager;
 		internal GameObject CustomPlatformManagerRButtons;
 		internal GameObject CustomPlatformManagerBButtons;
@@ -61,23 +63,23 @@ namespace CustomPlatformManager
 			Prepare();
 			Debug.Log(PluginInfo.Version);
 			Instance = this;
-			CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			CustomPlatL.transform.position = new Vector3(0, 0, 0);
-			CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			CustomPlatR.transform.position = new Vector3(0, 0, 0);
+			CubeL = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CubeL.transform.position = new Vector3(0, 0, 0);
+			CubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CubeR.transform.position = new Vector3(0, 0, 0);
 			CustomPlatformManager.transform.position = MenuPos;
 			CustomPlatformManager.transform.rotation = Quaternion.Euler(MenuRot);
 			CustomPlatformManager.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-			CustomPlatL.name = "CustomPlatL";
-			CustomPlatR.name = "CustomPlatR";
 			CustomPlatR.transform.localScale = globalSize;
 			CustomPlatL.transform.localScale = globalSize;
 			CubeMaterialR = new Material(Shader.Find("Universal Render Pipeline/Lit"));
 			CubeMaterialL = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-			CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
-			CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
+			CubeR.GetComponent<Renderer>().material = CubeMaterialR;
+			CubeL.GetComponent<Renderer>().material = CubeMaterialL;
 			CubeMaterialL.color = new Color(0, 0, 0);
 			CubeMaterialR.color = new Color(0, 0, 0);
+                        CustomPlatL = CubeL;
+			CustomPlatR = CubeR;
 			CustomPlatformManagerVersionText.text = "Custom Platform Manager v" + PluginInfo.Version;
 			foreach (Transform child in CustomPlatformManager.transform)
 			{
@@ -144,8 +146,8 @@ namespace CustomPlatformManager
 		{
 			if (inRoom)
 			{
-                //right controller
-                if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
+                                //right controller
+                                if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
 					if (platSetR == false)
 					{
