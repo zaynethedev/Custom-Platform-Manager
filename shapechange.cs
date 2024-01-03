@@ -51,19 +51,19 @@ namespace CustomPlatformManager.buttons
                 case "Square":
                     shape = "Cube";
                     shapetext.text = shape;
-                    Destroy(Plugin.Instance.CustomPlatL);
-                    Destroy(Plugin.Instance.CustomPlatR);
-                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Plugin.Instance.CustomPlatL.transform.position = new Vector3(0, 0, 0);
+                    Plugin.Instance.CustomPlatR.transform.position = new Vector3(0, 0, 0);
+                    Plugin.Instance.CustomPlatL = Plugin.Instance.CubeL;
+                    Plugin.Instance.CustomPlatR = Plugin.Instance.CubeR;
                     break;
 
                 case "Triangle":
                     shape = "Soon!";
                     shapetext.text = shape;
-                    Destroy(Plugin.Instance.CustomPlatL);
-                    Destroy(Plugin.Instance.CustomPlatR);
-                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Plugin.Instance.CustomPlatL.transform.position = new Vector3(0, 0, 0);
+                    Plugin.Instance.CustomPlatR.transform.position = new Vector3(0, 0, 0);
+                    Plugin.Instance.CustomPlatL = Plugin.Instance.CubeL;
+                    Plugin.Instance.CustomPlatR = Plugin.Instance.CubeR;
                     break;
             }
         }
