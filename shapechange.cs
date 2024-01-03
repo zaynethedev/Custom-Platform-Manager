@@ -17,6 +17,12 @@ namespace CustomPlatformManager.buttons
 
         public override void Start()
         {
+            internal GameObject SphereL = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            internal GameObject SphereR = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            Destroy(Plugin.Instance.SphereL.GetComponent<SphereCollider>());
+            Destroy(Plugin.Instance.SphereR.GetComponent<SphereCollider>());
+            Plugin.Instance.SphereR.AddComponent<BoxCollider>();
+            Plugin.Instance.SphereL.AddComponent<BoxCollider>();
             Instance = this;
             shapetext.text = shape;
             BoxCollider boxCollider = GetComponent<BoxCollider>();
@@ -36,36 +42,22 @@ namespace CustomPlatformManager.buttons
                 case "Circle":
                     shape = "Sphere";
                     shapetext.text = shape;
-                    Destroy(Plugin.Instance.CustomPlatL);
-                    Destroy(Plugin.Instance.CustomPlatR);
-                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<SphereCollider>());
-                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<SphereCollider>());
-                    Plugin.Instance.CustomPlatR.AddComponent<BoxCollider>();
-                    Plugin.Instance.CustomPlatL.AddComponent<BoxCollider>();
+                    Plugin.Instance.CustomPlatL = SphereL;
+                    Plugin.Instance.CustomPlatR = SphereR;
                     break;
 
                 case "Square":
                     shape = "Cube";
                     shapetext.text = shape;
-                    Destroy(Plugin.Instance.CustomPlatL);
-                    Destroy(Plugin.Instance.CustomPlatR);
-                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<BoxCollider>());
-                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<BoxCollider>());
-                    Plugin.Instance.CustomPlatR.AddComponent<BoxCollider>();
-                    Plugin.Instance.CustomPlatL.AddComponent<BoxCollider>();
+                    Plugin.Instance.CustomPlatL = Plugin.Instance.CubeL;
+                    Plugin.Instance.CustomPlatR = Plugin.Instance.CubeR;
                     break;
 
                 case "Triangle":
                     shape = "Soon!";
                     shapetext.text = shape;
-                    Destroy(Plugin.Instance.CustomPlatL);
-                    Destroy(Plugin.Instance.CustomPlatR);
-                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Plugin.Instance.CustomPlatL = Plugin.Instance.CubeL;
+                    Plugin.Instance.CustomPlatR = Plugin.Instance.CubeR;
                     break;
             }
         }
