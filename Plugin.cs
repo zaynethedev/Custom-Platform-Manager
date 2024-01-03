@@ -148,8 +148,6 @@ namespace CustomPlatformManager
 		{
 			if (inRoom)
 			{
-                CustomPlatR.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
-                CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
                 //right controller
                 if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
@@ -168,7 +166,7 @@ namespace CustomPlatformManager
 				{
 					platSetR = false;
 					CustomPlatR.transform.position = new Vector3(0, 0, 0);
-                    CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
+                    CustomPlatR.transform.eulerAngles = new Vector3(0, 0, 0);
                     CustomPlatR.transform.localScale = globalSize;
 					CustomPlatL.transform.localScale = globalSize;
 					CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
@@ -192,8 +190,8 @@ namespace CustomPlatformManager
 				{
 					platSetL = false;
 					CustomPlatL.transform.position = new Vector3(0, 0, 0);
-                    CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
-                    CustomPlatR.transform.localScale = globalSize;
+                    CustomPlatL.transform.eulerAngles = new Vector3(0, 0, 0);
+                    CustomPlatL.transform.localScale = globalSize;
 					CustomPlatL.transform.localScale = globalSize;
 					CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
 					CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
