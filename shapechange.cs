@@ -24,12 +24,6 @@ namespace CustomPlatformManager.buttons
             gameObject.layer = 18;
             onPressButton = new UnityEngine.Events.UnityEvent();
             onPressButton.AddListener(new UnityEngine.Events.UnityAction(ButtonActivation));
-            SphereL SphereL = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            SphereR SphereR = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            Destroy(Plugin.Instance.SphereL.GetComponent<BoxCollider>());
-            Destroy(Plugin.Instance.SphereR.GetComponent<BoxCollider>());
-            Plugin.Instance.SphereR.AddComponent<MeshCollider>();
-            Plugin.Instance.SphereL.AddComponent<MeshCollider>();
         }
 
         public override void ButtonActivation()
@@ -42,28 +36,36 @@ namespace CustomPlatformManager.buttons
                 case "Circle":
                     shape = "Sphere";
                     shapetext.text = shape;
-                    Plugin.Instance.CustomPlatL.transform.position = new Vector3(0, 0, 0);
-                    Plugin.Instance.CustomPlatR.transform.position = new Vector3(0, 0, 0);
-                    Plugin.Instance.CustomPlatL = SphereL;
-                    Plugin.Instance.CustomPlatR = SphereR;
+                    Destroy(Plugin.Instance.CustomPlatL);
+                    Destroy(Plugin.Instance.CustomPlatR);
+                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<SphereCollider>());
+                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<SphereCollider>());
+                    Plugin.Instance.CustomPlatR.AddComponent<BoxCollider>();
+                    Plugin.Instance.CustomPlatL.AddComponent<BoxCollider>();
                     break;
 
                 case "Square":
                     shape = "Cube";
                     shapetext.text = shape;
-                    Plugin.Instance.CustomPlatL.transform.position = new Vector3(0, 0, 0);
-                    Plugin.Instance.CustomPlatR.transform.position = new Vector3(0, 0, 0);
-                    Plugin.Instance.CustomPlatL = Plugin.Instance.CubeL;
-                    Plugin.Instance.CustomPlatR = Plugin.Instance.CubeR;
+                    Destroy(Plugin.Instance.CustomPlatL);
+                    Destroy(Plugin.Instance.CustomPlatR);
+                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<BoxCollider>());
+                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<BoxCollider>());
+                    Plugin.Instance.CustomPlatR.AddComponent<BoxCollider>();
+                    Plugin.Instance.CustomPlatL.AddComponent<BoxCollider>();
                     break;
 
                 case "Triangle":
                     shape = "Soon!";
                     shapetext.text = shape;
-                    Plugin.Instance.CustomPlatL.transform.position = new Vector3(0, 0, 0);
-                    Plugin.Instance.CustomPlatR.transform.position = new Vector3(0, 0, 0);
-                    Plugin.Instance.CustomPlatL = Plugin.Instance.CubeL;
-                    Plugin.Instance.CustomPlatR = Plugin.Instance.CubeR;
+                    Destroy(Plugin.Instance.CustomPlatL);
+                    Destroy(Plugin.Instance.CustomPlatR);
+                    Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     break;
             }
         }

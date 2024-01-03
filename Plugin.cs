@@ -26,8 +26,6 @@ namespace CustomPlatformManager
 		internal Material CubeMaterialR;
 		internal GameObject CustomPlatL;
 		internal Material CubeMaterialL;
-                internal GameObject CubeL;
-                internal GameObject CubeR;
 		internal GameObject CustomPlatformManager;
 		internal GameObject CustomPlatformManagerRButtons;
 		internal GameObject CustomPlatformManagerBButtons;
@@ -37,7 +35,7 @@ namespace CustomPlatformManager
 		public GameObject CustomPlatformManagerBlueTextObject;
 		public GameObject CustomPlatformManagerGreenTextObject;
 		public UnityEngine.Component UnusedButtons1;
-		public UnityEngine.Component UnusedButtons2; 
+		public UnityEngine.Component UnusedButtons2;
 		public Vector3 MenuPos = new Vector3(-65.2155f, 12.25f, -80.9355f);
 		public Vector3 MenuRot = new Vector3(0f, 300f, 0f);
 		public static Plugin Instance;
@@ -63,23 +61,23 @@ namespace CustomPlatformManager
 			Prepare();
 			Debug.Log(PluginInfo.Version);
 			Instance = this;
-			CubeL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			CubeL.transform.position = new Vector3(0, 0, 0);
-			CubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			CubeR.transform.position = new Vector3(0, 0, 0);
+			CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CustomPlatL.transform.position = new Vector3(0, 0, 0);
+			CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CustomPlatR.transform.position = new Vector3(0, 0, 0);
 			CustomPlatformManager.transform.position = MenuPos;
 			CustomPlatformManager.transform.rotation = Quaternion.Euler(MenuRot);
 			CustomPlatformManager.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+			CustomPlatL.name = "CustomPlatL";
+			CustomPlatR.name = "CustomPlatR";
 			CustomPlatR.transform.localScale = globalSize;
 			CustomPlatL.transform.localScale = globalSize;
 			CubeMaterialR = new Material(Shader.Find("Universal Render Pipeline/Lit"));
 			CubeMaterialL = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-			CubeR.GetComponent<Renderer>().material = CubeMaterialR;
-			CubeL.GetComponent<Renderer>().material = CubeMaterialL;
+			CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
+			CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
 			CubeMaterialL.color = new Color(0, 0, 0);
 			CubeMaterialR.color = new Color(0, 0, 0);
-                        CustomPlatL = CubeL;
-			CustomPlatR = CubeR;
 			CustomPlatformManagerVersionText.text = "Custom Platform Manager v" + PluginInfo.Version;
 			foreach (Transform child in CustomPlatformManager.transform)
 			{
@@ -105,10 +103,14 @@ namespace CustomPlatformManager
 			{
 				child.gameObject.AddComponent<sizechange>();
 			}
-			CustomPlatL = Instantiate(CustomPlatL);
-			CustomPlatR = Instantiate(CustomPlatR);
+			Instantiate(CustomPlatL);
+			Instantiate(CustomPlatR);
 			CustomPlatL.AddComponent<GorillaSurfaceOverride>();
 			CustomPlatR.AddComponent<GorillaSurfaceOverride>();
+			Destroy(CustomPlatL.GetComponent<BoxCollider>());
+			Destroy(CustomPlatR.GetComponent<BoxCollider>());
+			CustomPlatR.AddComponent<BoxCollider>();
+			CustomPlatL.AddComponent<BoxCollider>();
 			CustomPlatformManager.transform.Find("COLORS")?.gameObject.AddComponent<switchbutton>();
 			CustomPlatformManager.transform.Find("SHAPE")?.gameObject.AddComponent<switchbutton>();
 			CustomPlatformManager.transform.Find("SIZE")?.gameObject.AddComponent<switchbutton>();
@@ -146,44 +148,56 @@ namespace CustomPlatformManager
 		{
 			if (inRoom)
 			{
-                                //right controller
-                                if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
+				//right controller
+				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
 					if (platSetR == false)
 					{
-						CustomPlatR.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation);
-                                                CustomPlatR.transform.rotate(GorillaLocomotion.Player.Instance.rightControllerTransform.forward, 90);
 						CustomPlatR.transform.position = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
-                                                CustomPlatR.transform.localScale = globalSize;
-					        CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
-	                                        platSetR = true;
+						CustomPlatR.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
+						platSetR = true;
+						CustomPlatR.transform.localScale = globalSize;
+						CustomPlatL.transform.localScale = globalSize;
+						CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
+						CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
 					}
-                                }
+				}
 				else
 				{
 					platSetR = false;
 					CustomPlatR.transform.position = new Vector3(0, 0, 0);
-                                        CustomPlatR.transform.eulerAngles = new Vector3(0, 0, 0);
+					CustomPlatR.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
+					CustomPlatR.transform.localScale = globalSize;
+					CustomPlatL.transform.localScale = globalSize;
+					CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
+					CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
 				}
 				//left controller
 				if (ControllerInputPoller.instance.leftControllerGripFloat >= 0.5f)
 				{
 					if (platSetL == false)
 					{
-						CustomPlatL.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation);
-                                                CustomPlatL.transform.rotate(GorillaLocomotion.Player.Instance.leftControllerTransform.forward, 90);
-                                                CustomPlatL.transform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
+						CustomPlatL.transform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
+						CustomPlatL.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
+						platSetL = true;
+						CustomPlatR.transform.localScale = globalSize;
 						CustomPlatL.transform.localScale = globalSize;
+						CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
 						CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
-                                                platSetL = true;
 					}
 				}
 				else
 				{
-					platSetL = false;
 					CustomPlatL.transform.position = new Vector3(0, 0, 0);
-                    CustomPlatL.transform.eulerAngles = new Vector3(0, 0, 0);
+					platSetL = false;
+					CustomPlatL.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
+					CustomPlatR.transform.localScale = globalSize;
+					CustomPlatL.transform.localScale = globalSize;
+					CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
+					CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
 				}
+
+
 			}
 		}
 		/* This attribute tells Utilla to call this method when a modded room is joined */
