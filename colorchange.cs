@@ -5,7 +5,6 @@ using CustomPlatformManager;
 using UnityEngine;
 using TMPro;
 using System.EnterpriseServices;
-using Steamworks;
 using System.ComponentModel;
 
 namespace CustomPlatformManager.buttons

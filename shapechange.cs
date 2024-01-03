@@ -5,7 +5,6 @@ using CustomPlatformManager;
 using UnityEngine;
 using TMPro;
 using System.EnterpriseServices;
-using Steamworks;
 using System.ComponentModel;
 
 namespace CustomPlatformManager.buttons
@@ -41,6 +40,10 @@ namespace CustomPlatformManager.buttons
                     Destroy(Plugin.Instance.CustomPlatR);
                     Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<SphereCollider>());
+                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<SphereCollider>());
+                    Plugin.Instance.CustomPlatR.AddComponent<MeshCollider>();
+                    Plugin.Instance.CustomPlatL.AddComponent<MeshCollider>();
                     break;
 
                 case "Square":
@@ -50,6 +53,10 @@ namespace CustomPlatformManager.buttons
                     Destroy(Plugin.Instance.CustomPlatR);
                     Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<BoxCollider>());
+                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<BoxCollider>());
+                    Plugin.Instance.CustomPlatR.AddComponent<MeshCollider>();
+                    Plugin.Instance.CustomPlatL.AddComponent<MeshCollider>();
                     break;
 
                 case "Triangle":

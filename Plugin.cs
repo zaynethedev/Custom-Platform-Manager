@@ -34,6 +34,8 @@ namespace CustomPlatformManager
 		public GameObject CustomPlatformManagerRedTextObject;
 		public GameObject CustomPlatformManagerBlueTextObject;
 		public GameObject CustomPlatformManagerGreenTextObject;
+		public UnityEngine.Component UnusedButtons1;
+		public UnityEngine.Component UnusedButtons2; 
 		public Vector3 MenuPos = new Vector3(-65.2155f, 12.25f, -80.9355f);
 		public Vector3 MenuRot = new Vector3(0f, 300f, 0f);
 		public static Plugin Instance;
@@ -93,22 +95,29 @@ namespace CustomPlatformManager
 			{
 				child.gameObject.AddComponent<colorchange>();
 			}
-			Instantiate(CustomPlatL);
-			Instantiate(CustomPlatR);
+			foreach (Transform child in CustomPlatformManager.transform.Find("ShapeButtons")?.gameObject.transform)
+			{
+				child.gameObject.AddComponent<shapechange>();
+			}
+			foreach (Transform child in CustomPlatformManager.transform.Find("SizeButtons")?.gameObject.transform)
+			{
+				child.gameObject.AddComponent<sizechange>();
+			}
+			CustomPlatL = Instantiate(CustomPlatL);
+			CustomPlatR = Instantiate(CustomPlatR);
 			CustomPlatL.AddComponent<GorillaSurfaceOverride>();
 			CustomPlatR.AddComponent<GorillaSurfaceOverride>();
+			Destroy(CustomPlatL.GetComponent<BoxCollider>());
+			Destroy(CustomPlatR.GetComponent<BoxCollider>());
+			CustomPlatR.AddComponent<MeshCollider>();
+			CustomPlatL.AddComponent<MeshCollider>();
 			CustomPlatformManager.transform.Find("COLORS")?.gameObject.AddComponent<switchbutton>();
 			CustomPlatformManager.transform.Find("SHAPE")?.gameObject.AddComponent<switchbutton>();
 			CustomPlatformManager.transform.Find("SIZE")?.gameObject.AddComponent<switchbutton>();
-			CustomPlatformManager.transform.Find("ShapeButtons/Circle")?.gameObject.AddComponent<shapechange>();
-			CustomPlatformManager.transform.Find("ShapeButtons/Square")?.gameObject.AddComponent<shapechange>();
-			CustomPlatformManager.transform.Find("ShapeButtons/Triangle")?.gameObject.AddComponent<shapechange>();
-			CustomPlatformManager.transform.Find("SizeButtons/Size0")?.gameObject.AddComponent<sizechange>();
-			CustomPlatformManager.transform.Find("SizeButtons/Size1")?.gameObject.AddComponent<sizechange>();
-			CustomPlatformManager.transform.Find("SizeButtons/Size2")?.gameObject.AddComponent<sizechange>();
-			CustomPlatformManager.transform.Find("SizeButtons/Size3")?.gameObject.AddComponent<sizechange>();
-			CustomPlatformManager.transform.Find("SizeButtons/Size4")?.gameObject.AddComponent<sizechange>();
-			CustomPlatformManager.transform.Find("SizeButtons/Size5")?.gameObject.AddComponent<sizechange>();
+			UnusedButtons1 = CustomPlatformManager.transform.Find("ShapeButtons/UnusedShapeButtons")?.gameObject.GetComponent<shapechange>();
+			UnusedButtons2 = CustomPlatformManager.transform.Find("SizeButtons/UnusedButtonsSize")?.gameObject.GetComponent<sizechange>();
+			Destroy(UnusedButtons1);
+			Destroy(UnusedButtons2);
 			CustomPlatformManager = Instantiate(CustomPlatformManager);
 			Debug.Log("Platform Manager was instantiated");
 		}
@@ -139,12 +148,14 @@ namespace CustomPlatformManager
 		{
 			if (inRoom)
 			{
-				//right controller
-				if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
+                CustomPlatR.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
+                CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
+                //right controller
+                if (ControllerInputPoller.instance.rightControllerGripFloat >= 0.5f)
 				{
 					if (platSetR == false)
 					{
-						CustomPlatR.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
+						CustomPlatR.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
 						CustomPlatR.transform.position = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.position.x, GorillaLocomotion.Player.Instance.rightControllerTransform.position.y, GorillaLocomotion.Player.Instance.rightControllerTransform.position.z);
 						platSetR = true;
 						CustomPlatR.transform.localScale = globalSize;
@@ -157,8 +168,8 @@ namespace CustomPlatformManager
 				{
 					platSetR = false;
 					CustomPlatR.transform.position = new Vector3(0, 0, 0);
-					CustomPlatR.transform.eulerAngles = new Vector3(0, 0, 0);
-					CustomPlatR.transform.localScale = globalSize;
+                    CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.rightControllerTransform.eulerAngles.z);
+                    CustomPlatR.transform.localScale = globalSize;
 					CustomPlatL.transform.localScale = globalSize;
 					CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
 					CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
@@ -168,8 +179,8 @@ namespace CustomPlatformManager
 				{
 					if (platSetL == false)
 					{
-						CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
-						CustomPlatL.transform.position = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.position.x, GorillaLocomotion.Player.Instance.leftControllerTransform.position.y, GorillaLocomotion.Player.Instance.leftControllerTransform.position.z);
+						CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
+                        CustomPlatL.transform.position = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.position.x, GorillaLocomotion.Player.Instance.leftControllerTransform.position.y, GorillaLocomotion.Player.Instance.leftControllerTransform.position.z);
 						platSetL = true;
 						CustomPlatR.transform.localScale = globalSize;
 						CustomPlatL.transform.localScale = globalSize;
@@ -181,8 +192,8 @@ namespace CustomPlatformManager
 				{
 					platSetL = false;
 					CustomPlatL.transform.position = new Vector3(0, 0, 0);
-					CustomPlatL.transform.eulerAngles = new Vector3(0, 0, 0);
-					CustomPlatR.transform.localScale = globalSize;
+                    CustomPlatL.transform.eulerAngles = new Vector3(GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.x + 90, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.y, GorillaLocomotion.Player.Instance.leftControllerTransform.eulerAngles.z);
+                    CustomPlatR.transform.localScale = globalSize;
 					CustomPlatL.transform.localScale = globalSize;
 					CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
 					CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
