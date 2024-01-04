@@ -213,6 +213,9 @@ namespace CustomPlatformManager
 			/* Activate your mod here */
 			/* This code will run regardless of if the mod is enabled*/
 			/* Make sure all code is going to be here or else your mod will be considered a cheat.*/
+			CustomPlatL.transform.position = new Vector3(0, 0, 0);
+			CustomPlatR.transform.position = new Vector3(0, 0, 0);
+			CustomPlatformManager.SetActive(true);
 			inRoom = true;
 		}
 
@@ -222,7 +225,9 @@ namespace CustomPlatformManager
 		{
 			/* Deactivate your mod here */
 			/* This code will run regardless of if the mod is enabled*/
-
+			CustomPlatL.transform.position = new Vector3(0, 0, 0);
+			CustomPlatR.transform.position = new Vector3(0, 0, 0);
+			CustomPlatformManager.SetActive(false);
 			inRoom = false;
 		}
 	}
