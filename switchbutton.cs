@@ -34,28 +34,43 @@ namespace CustomPlatformManager.buttons
                     Plugin.Instance.CustomPlatformManager.transform.Find("ColorButtons")?.gameObject.SetActive(true);
                     Plugin.Instance.CustomPlatformManager.transform.Find("ShapeButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("SizeButtons")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("StickyButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color")?.gameObject.SetActive(true);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Shape")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Size")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Sticky")?.gameObject.SetActive(false);
                     break;
 
                 case "SHAPE":
                     Plugin.Instance.CustomPlatformManager.transform.Find("ColorButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("ShapeButtons")?.gameObject.SetActive(true);
                     Plugin.Instance.CustomPlatformManager.transform.Find("SizeButtons")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("StickyButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Shape")?.gameObject.SetActive(true);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Size")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Sticky")?.gameObject.SetActive(false);
                     break;
 
                 case "SIZE":
                     Plugin.Instance.CustomPlatformManager.transform.Find("ColorButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("ShapeButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("SizeButtons")?.gameObject.SetActive(true);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("StickyButtons")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Shape")?.gameObject.SetActive(false);
                     Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Size")?.gameObject.SetActive(true);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Sticky")?.gameObject.SetActive(false);
                     break;
+                case "STICKY":
+                    Plugin.Instance.CustomPlatformManager.transform.Find("ColorButtons")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("ShapeButtons")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("SizeButtons")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("StickyButtons")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Color")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Shape")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Size")?.gameObject.SetActive(false);
+                    Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Sticky")?.gameObject.SetActive(true);
             }
         }
     }
