@@ -41,6 +41,7 @@ namespace CustomPlatformManager
 		public Vector3 MenuRot = new Vector3(0f, 300f, 0f);
 		public static Plugin Instance;
 		public static Vector3 globalSize = new Vector3(0.04f, 0.25f, 0.25f);
+		public stativ Vector3 platOffset = new Vector3(0f, -1f, 0f)
 
 		void Start()
 		{
@@ -155,6 +156,7 @@ namespace CustomPlatformManager
 					if (platSetR == false)
 					{
 						CustomPlatR.transform.position = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
+						CustomPlatR.transform.translate(platOffset);
 						CustomPlatR.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
 						platSetR = true;
 						CustomPlatR.transform.localScale = globalSize;
@@ -179,6 +181,7 @@ namespace CustomPlatformManager
 					if (platSetL == false)
 					{
 						CustomPlatL.transform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
+						CustomPlatL.transform.translate(platOffset);
 						CustomPlatL.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
 						platSetL = true;
 						CustomPlatR.transform.localScale = globalSize;
