@@ -7,6 +7,6 @@
 	{
 		public const string GUID = "com.zaynevr.gorillatag.CustomPlatformManager";
 		public const string Name = "CustomPlatformManager";
-		public const string Version = "1.0.0";
+		public const string Version = "1.0.1";
 	}
 }
