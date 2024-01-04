@@ -40,7 +40,7 @@ namespace CustomPlatformManager
 		public Vector3 MenuPos = new Vector3(-65.2155f, 12.25f, -80.9355f);
 		public Vector3 MenuRot = new Vector3(0f, 300f, 0f);
 		public static Plugin Instance;
-		public static Vector3 globalSize = new Vector3(0.25f, 0.04f, 0.25f);
+		public static Vector3 globalSize = new Vector3(0.04f, 0.25f, 0.25f);
 
 		void Start()
 		{
