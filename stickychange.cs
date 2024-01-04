@@ -39,7 +39,7 @@ namespace CustomPlatformManager.buttons
                 case "Loose":
                     stickyTextString = "Loose Platforms";
                     stickytext.text = stickyTextString;
-                    Plugin.platOffset = new Vector3(0f, -1f, 0f);
+                    Plugin.platOffset = new Vector3(0f, -1f, 0f); //need to add the gorilla rigidbody's velocity vector to catch the hand when at high speeds, I don't have any docs on where to get that rn.
                     break;
             }
         }
