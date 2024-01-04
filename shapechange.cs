@@ -44,6 +44,8 @@ namespace CustomPlatformManager.buttons
                     Destroy(Plugin.Instance.CustomPlatR.GetComponent<SphereCollider>());
                     Plugin.Instance.CustomPlatR.AddComponent<BoxCollider>();
                     Plugin.Instance.CustomPlatL.AddComponent<BoxCollider>();
+                    Plugin.Instance.CustomPlatL.AddComponent<GorillaSurfaceOverride>();
+                    Plugin.Instance.CustomPlatL.AddComponent<GorillaSurfaceOverride>();
                     break;
 
                 case "Square":
@@ -53,10 +55,9 @@ namespace CustomPlatformManager.buttons
                     Destroy(Plugin.Instance.CustomPlatR);
                     Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(Plugin.Instance.CustomPlatL.GetComponent<BoxCollider>());
-                    Destroy(Plugin.Instance.CustomPlatR.GetComponent<BoxCollider>());
-                    Plugin.Instance.CustomPlatR.AddComponent<BoxCollider>();
-                    Plugin.Instance.CustomPlatL.AddComponent<BoxCollider>();
+                    //Cube is created with box collider by default
+                    Plugin.Instance.CustomPlatL.AddComponent<GorillaSurfaceOverride>();
+                    Plugin.Instance.CustomPlatL.AddComponent<GorillaSurfaceOverride>();
                     break;
 
                 case "Triangle":
@@ -66,6 +67,8 @@ namespace CustomPlatformManager.buttons
                     Destroy(Plugin.Instance.CustomPlatR);
                     Plugin.Instance.CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Plugin.Instance.CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    Plugin.Instance.CustomPlatL.AddComponent<GorillaSurfaceOverride>();
+                    Plugin.Instance.CustomPlatL.AddComponent<GorillaSurfaceOverride>();
                     break;
             }
         }
