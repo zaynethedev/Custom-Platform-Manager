@@ -9,6 +9,7 @@ using System.ComponentModel;
 using TMPro;
 using System.Threading.Tasks;
 using Unity.Mathematics;
+using Photon.Pun;
 
 namespace CustomPlatformManager
 {
@@ -26,8 +27,6 @@ namespace CustomPlatformManager
 		internal Material CubeMaterialR;
 		internal GameObject CustomPlatL;
 		internal Material CubeMaterialL;
-		internal GameObject CubeL;
-		internal GameObject CubeR;
 		internal GameObject CustomPlatformManager;
 		internal GameObject CustomPlatformManagerRButtons;
 		internal GameObject CustomPlatformManagerBButtons;
@@ -63,19 +62,21 @@ namespace CustomPlatformManager
 			Prepare();
 			Debug.Log(PluginInfo.Version);
 			Instance = this;
-			CubeL = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			CubeL.transform.position = new Vector3(0, 0, 0);
-			CubeR = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			CubeR.transform.position = new Vector3(0, 0, 0);
+			CustomPlatL = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CustomPlatL.transform.position = new Vector3(0, 0, 0);
+			CustomPlatR = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			CustomPlatR.transform.position = new Vector3(0, 0, 0);
 			CustomPlatformManager.transform.position = MenuPos;
 			CustomPlatformManager.transform.rotation = Quaternion.Euler(MenuRot);
 			CustomPlatformManager.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-			CubeR.transform.localScale = globalSize;
-			CubeL.transform.localScale = globalSize;
+			CustomPlatL.name = "CustomPlatL";
+			CustomPlatR.name = "CustomPlatR";
+			CustomPlatR.transform.localScale = globalSize;
+			CustomPlatL.transform.localScale = globalSize;
 			CubeMaterialR = new Material(Shader.Find("Universal Render Pipeline/Lit"));
 			CubeMaterialL = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-			CubeR.GetComponent<Renderer>().material = CubeMaterialR;
-			CubeL.GetComponent<Renderer>().material = CubeMaterialL;
+			CustomPlatR.GetComponent<Renderer>().material = CubeMaterialR;
+			CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
 			CubeMaterialL.color = new Color(0, 0, 0);
 			CubeMaterialR.color = new Color(0, 0, 0);
 			CustomPlatformManagerVersionText.text = "Custom Platform Manager v" + PluginInfo.Version;
@@ -103,16 +104,14 @@ namespace CustomPlatformManager
 			{
 				child.gameObject.AddComponent<sizechange>();
 			}
-			Instantiate(CubeL);
-			Instantiate(CubeR);
-			CubeL.AddComponent<GorillaSurfaceOverride>();
-			CubeR.AddComponent<GorillaSurfaceOverride>();
-			Destroy(CubeL.GetComponent<BoxCollider>());
-			Destroy(CubeR.GetComponent<BoxCollider>());
-			CubeR.AddComponent<BoxCollider>();
-			CubeL.AddComponent<BoxCollider>();
-			CustomPlatL = CubeL;
-			CustomPlatR = CubeR;
+			Instantiate(CustomPlatL);
+			Instantiate(CustomPlatR);
+			CustomPlatL.AddComponent<GorillaSurfaceOverride>();
+			CustomPlatR.AddComponent<GorillaSurfaceOverride>();
+			Destroy(CustomPlatL.GetComponent<BoxCollider>());
+			Destroy(CustomPlatR.GetComponent<BoxCollider>());
+			CustomPlatR.AddComponent<BoxCollider>();
+			CustomPlatL.AddComponent<BoxCollider>();
 			CustomPlatformManager.transform.Find("COLORS")?.gameObject.AddComponent<switchbutton>();
 			CustomPlatformManager.transform.Find("SHAPE")?.gameObject.AddComponent<switchbutton>();
 			CustomPlatformManager.transform.Find("SIZE")?.gameObject.AddComponent<switchbutton>();
@@ -199,6 +198,11 @@ namespace CustomPlatformManager
 					CustomPlatL.GetComponent<Renderer>().material = CubeMaterialL;
 				}
 
+				if (!inRoom)
+				{
+					CustomPlatL.transform.position = new Vector3(0, 0, 0);
+					CustomPlatR.transform.position = new Vector3(0, 0, 0);
+				}
 
 			}
 		}
