@@ -36,22 +36,22 @@ namespace CustomPlatformManager.buttons
                 case "Size0":
                     sizetextstring = "1";
                     sizetext.text = sizetextstring;
-                    Plugin.globalSize = new Vector3(0.25f, 0.04f, 0.25f);
+                    Plugin.globalSize = new Vector3(0.04f, 0.25f, 0.25f);
                     break;
                 case "Size1":
                     sizetextstring = "2";
                     sizetext.text = sizetextstring;
-                    Plugin.globalSize = new Vector3(0.3f, 0.048f, 0.3f);
+                    Plugin.globalSize = new Vector3(0.48f, 0.03f, 0.3f);
                     break;
                 case "Size2":
                     sizetextstring = "3";
                     sizetext.text = sizetextstring;
-                    Plugin.globalSize = new Vector3(0.36f, 0.0576f, 0.36f);
+                    Plugin.globalSize = new Vector3(0.0576f, 0.36f, 0.36f);
                     break;
                 case "Size3":
                     sizetextstring = "4";
                     sizetext.text = sizetextstring;
-                    Plugin.globalSize = new Vector3(0.432f, 0.06912f, 0.432f);
+                    Plugin.globalSize = new Vector3(0.06912f, 0.432f, 0.432f);
                     break;
                 case "Size4":
                     sizetextstring = "5";
@@ -61,7 +61,7 @@ namespace CustomPlatformManager.buttons
                 case "Size5":
                     sizetextstring = "6";
                     sizetext.text = sizetextstring;
-                    Plugin.globalSize = new Vector3(0.6f, 0.1f, 0.6f);
+                    Plugin.globalSize = new Vector3(0.1f, 0.6f, 0.6f);
                     break;
             }
         }
