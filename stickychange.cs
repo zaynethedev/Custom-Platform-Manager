@@ -12,6 +12,8 @@ namespace CustomPlatformManager.buttons
     internal class stickychange : GorillaPressableButton
     {
         public static stickyTextString = "Loose Platforms";
+        public static stickychange Instance;
+        public TMP_Text stickytext = Plugin.Instance.CustomPlatformManager.transform.Find("Computer/Size/StickyValue")?.gameObject.GetComponent<TextMeshPro>();
 
         public override void Start()
         {
