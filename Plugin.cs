@@ -155,6 +155,7 @@ namespace CustomPlatformManager
 					if (platSetR == false)
 					{
 						CustomPlatR.transform.position = GorillaLocomotion.Player.Instance.rightControllerTransform.position;
+						CustomPlatR.transform.translate(platOffset);
 						CustomPlatR.transform.rotation = GorillaLocomotion.Player.Instance.rightControllerTransform.rotation;
 						platSetR = true;
 						CustomPlatR.transform.localScale = globalSize;
@@ -179,6 +180,7 @@ namespace CustomPlatformManager
 					if (platSetL == false)
 					{
 						CustomPlatL.transform.position = GorillaLocomotion.Player.Instance.leftControllerTransform.position;
+						CustomPlatL.transform.translate(platOffset);
 						CustomPlatL.transform.rotation = GorillaLocomotion.Player.Instance.leftControllerTransform.rotation;
 						platSetL = true;
 						CustomPlatR.transform.localScale = globalSize;
