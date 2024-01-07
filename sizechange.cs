@@ -56,7 +56,7 @@ namespace CustomPlatformManager.buttons
                 case "Size4":
                     sizetextstring = "5";
                     sizetext.text = sizetextstring;
-                    Plugin.globalSize = new Vector3(0.5f, 0.08f, 0.5f);
+                    Plugin.globalSize = new Vector3(0.08f, 0.5f, 0.5f);
                     break;
                 case "Size5":
                     sizetextstring = "6";
